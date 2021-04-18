@@ -1,0 +1,21 @@
+{
+  "name": "gci",
+  "version": "1.0.0",
+  "description": "Listen to adhan on google home speakers.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src"
+  },
+  "keywords": [
+    "athan",
+    "adhan",
+    "Google Home"
+  ],
+  "author": "Ahmad EL Masri",
+  "license": "ISC",
+  "dependencies": {
+    "adhan": "^4.0.3",
+    "cron": "^1.8.2",
+    "google-home-push": "^1.2.0"
+  }
+}
