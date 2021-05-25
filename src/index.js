@@ -47,7 +47,7 @@ function initNextPrayer(myHome) {
     if (asr > 0)  waitAndCallPrayer(asr, myHome, CONFIG.ATHAN.ASR)
 
     const maghrib = getNextPrayer(prayerTimes.maghrib)
-    if (maghrib > 0)  waitAndCallPrayer(maghrib, myHome, CONFIG.ATHAN.DEFAULT)
+    if (maghrib > 0)  waitAndCallPrayer(maghrib, myHome, CONFIG.ATHAN.MAGHRIB)
 
     const isha = getNextPrayer(prayerTimes.isha)
     if (isha > 0)  waitAndCallPrayer(isha, myHome, CONFIG.ATHAN.ISHA)
