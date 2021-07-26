@@ -1,5 +1,5 @@
 const GoogleHome = require("google-home-push");
-const { PrayerTimes, Coordinates, CalculationMethod, PolarCircleResolution, Madhab } = require('adhan')
+const { PrayerTimes, Coordinates, CalculationMethod, PolarCircleResolution, Madhab, HighLatitudeRule } = require('adhan')
 const { CronJob } = require('cron');
 const CONFIG = require('./config');
 
@@ -13,24 +13,26 @@ function getNextPrayer(targetDate) {
     console.log('time to wait: ', nextTimeOut / 1000)
     return nextTimeOut;
 }
- 
+
 function waitAndCallPrayer(nextTimeOut, myHome, athanLink) {
     setTimeout(() => {
-        console.log('Start Calling To Prayer'); 
+        console.log('Start Calling To Prayer');
         myHome.push(athanLink);
     }, nextTimeOut)
 }
 
-function getPrayerTimes() {    
-    const params = CalculationMethod.MuslimWorldLeague();
+function getPrayerTimes() {
+    const params = CalculationMethod.UmmAlQura();
     params.madhab = Madhab.Shafi;
-    params.polarCircleResolution = PolarCircleResolution.AqrabBalad;
-    params.adjustments.fajr = 2;
+    params.highLatitudeRule = HighLatitudeRule.TwilightAngle;
+    params.polarCircleResolution = PolarCircleResolution.Unresolved;
+    params.adjustments.fajr = 20;
     params.adjustments.maghrib = 3;
-    
+    params.adjustments.isha = 26;
+
     const coordinates = new Coordinates(51.450298, 5.482038);
     const date = new Date();
-    const prayerTimes = new PrayerTimes(coordinates, date, params); 
+    const prayerTimes = new PrayerTimes(coordinates, date, params);
     return prayerTimes;
 }
 
@@ -55,9 +57,9 @@ function initNextPrayer(myHome) {
 
 
 const job = new CronJob('30 1 * * *', async () => {
-    console.log('new day new prayer time'); 
+    console.log('new day new prayer time');
     initNextPrayer(myHome);
 });
 
-job.start(); 
+job.start();
 initNextPrayer(myHome);
