@@ -1,6 +1,7 @@
 from datetime import datetime
 
 import pytz
+from app_types import IAppConfig
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
@@ -17,7 +18,12 @@ def set_schedulers(scheduler: BackgroundScheduler, times, cb):
         )
 
 
-def set_daily_schedulers(scheduler: BackgroundScheduler, cb):
+def set_daily_schedulers(scheduler: BackgroundScheduler, app_config: IAppConfig, cb):
     scheduler.add_job(
-        cb, "cron", id="set_daily_schedulers", hour=0, minute=5, args=[scheduler]
+        cb,
+        "cron",
+        id="set_daily_schedulers",
+        hour=0,
+        minute=5,
+        args=[scheduler, app_config],
     )

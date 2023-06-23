@@ -11,3 +11,5 @@ services:
     environment:
       - FLASK_APP=app/flask_app.py
       - FLASK_RUN_HOST=0.0.0.0
+      - MAWAQIT_USERNAME=example.com
+      - MAWAQIT_PASSWORD=exmaple.com
