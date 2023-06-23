@@ -1,9 +1,10 @@
 from datetime import datetime
 
 import pytz
+from apscheduler.schedulers.background import BackgroundScheduler
 
 
-def setSchedulers(scheduler, times, cb):
+def set_schedulers(scheduler: BackgroundScheduler, times, cb):
     tz = pytz.timezone("Europe/Amsterdam")
 
     for salat, time in times["todayTimes"].items():
@@ -15,4 +16,8 @@ def setSchedulers(scheduler, times, cb):
             cb, "date", run_date=run_time, id=salat, kwargs={"salat": salat}
         )
 
-    scheduler.start()
+
+def set_daily_schedulers(scheduler: BackgroundScheduler, cb):
+    scheduler.add_job(
+        cb, "cron", id="set_daily_schedulers", hour=0, minute=5, args=[scheduler]
+    )
