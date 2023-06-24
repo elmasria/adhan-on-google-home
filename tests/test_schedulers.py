@@ -1,4 +1,4 @@
-from datetime import datetime
+# from datetime import datetime
 from unittest.mock import MagicMock
 
 import pytest
@@ -33,7 +33,9 @@ def scheduler():
 
 
 def test_setSchedulers(times, cb, scheduler):
-    # current_hour, current_minute = map(int, datetime.now().strftime("%H:%M").split(":"))
+    # current_hour, current_minute = map(
+    # int, datetime.now().strftime("%H:%M").split(":")
+    # )
 
     # future_times = 0
     # for salat, time in times["todayTimes"].items():
