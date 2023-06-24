@@ -44,8 +44,8 @@ def get_prayer_times_by_mosque(
             today_times = {
                 salat: time for salat, time in zip(salat_list, data["times"])
             }
-            today_times["jumua"] = data["jumua"]
-            today_times["shuruq"] = data["shuruq"]
+            # today_times["jumua"] = data["jumua"]
+            # today_times["shuruq"] = data["shuruq"]
 
             return {"todayTimes": today_times}
         return None
