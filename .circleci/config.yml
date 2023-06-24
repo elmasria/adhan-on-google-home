@@ -18,20 +18,17 @@ jobs:
       - run:
           name: Get Version
           command: TAG_VERSION="$(changelog-manager suggest)"
-      - docker/check:
-          registry-url: https://index.docker.io/v1/
+      - docker/check
       - docker/build:
           image: ahmadmasri/athan
           tag: ${TAG_VERSION}
           dockerfile: Dockerfile
           deployment: true
-          registry: https://index.docker.io/v1/
           requires:
             - setup_remote_docker
       - docker/push:
           image: ahmadmasri/athan
           tag: ${TAG_VERSION}
-          registry: https://index.docker.io/v1/
 
 workflows:
   version: 2
