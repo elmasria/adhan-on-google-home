@@ -1,14 +1,14 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from .api import (
+from app.api import (
     api_mawaqit_login_get_token,
     get_prayer_times_by_mosque,
     initialize_session,
 )
-from .app_types import IAppConfig
-from .caster import getDeviceByName, playFile
-from .helper import get_server_ip
-from .schedulers import set_schedulers
+from app.app_types import IAppConfig
+from app.caster import getDeviceByName, playFile
+from app.helper import get_server_ip
+from app.schedulers import set_schedulers
 
 
 def adhan_play(salat: str, app_config: IAppConfig):

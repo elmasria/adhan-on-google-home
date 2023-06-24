@@ -1,10 +1,10 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from .app_types import IAppConfig
-from .bll import adhan_task_schedule
-from .config import get_app_config
-from .flask_app import init_app
-from .schedulers import set_daily_schedulers
+from app.app_types import IAppConfig
+from app.bll import adhan_task_schedule
+from app.config import get_app_config
+from app.flask_app import init_app
+from app.schedulers import set_daily_schedulers
 
 app_config: IAppConfig = get_app_config()
 

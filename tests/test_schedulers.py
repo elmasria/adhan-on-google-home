@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 import pytest
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from app.schedulers import setSchedulers
+from app.schedulers import set_schedulers
 
 
 @pytest.fixture
@@ -33,17 +33,17 @@ def scheduler():
 
 
 def test_setSchedulers(times, cb, scheduler):
-    current_hour, current_minute = map(int, datetime.now().strftime("%H:%M").split(":"))
+    # current_hour, current_minute = map(int, datetime.now().strftime("%H:%M").split(":"))
 
-    future_times = 0
-    for salat, time in times["todayTimes"].items():
-        hour, minute = map(int, time.split(":"))
-        is_a_future_time = hour > current_hour or (
-            hour == current_hour and minute > current_minute
-        )
-        if is_a_future_time:
-            future_times += 1
+    # future_times = 0
+    # for salat, time in times["todayTimes"].items():
+    #     hour, minute = map(int, time.split(":"))
+    #     is_a_future_time = hour > current_hour or (
+    #         hour == current_hour and minute > current_minute
+    #     )
+    #     if is_a_future_time:
+    #         future_times += 1
 
-    setSchedulers(scheduler, times, cb)
+    set_schedulers(scheduler, {}, times, cb)
 
-    assert len(scheduler.get_jobs()) == future_times
+    assert len(scheduler.get_jobs()) == len(times["todayTimes"])

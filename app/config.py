@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv
 
-from .app_types import IAppConfig
+from app.app_types import IAppConfig
 
 load_dotenv()
 

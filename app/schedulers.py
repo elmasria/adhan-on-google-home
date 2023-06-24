@@ -3,7 +3,7 @@ from datetime import datetime
 import pytz
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from .app_types import IAppConfig
+from app.app_types import IAppConfig
 
 
 def set_schedulers(scheduler: BackgroundScheduler, app_config: IAppConfig, times, cb):
