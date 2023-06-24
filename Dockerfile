@@ -6,7 +6,8 @@ COPY pyproject.toml ./
 
 RUN curl -sSL https://install.python-poetry.org | python -
 ENV PATH=/root/.local/bin:$PATH
-RUN pwd && poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
+RUN cd ~ && pwd && echo "${PATH}"
+RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
 
 COPY . .
 
