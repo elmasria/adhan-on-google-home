@@ -23,9 +23,6 @@ jobs:
           image: ahmadmasri/athan
           tag: ${TAG_VERSION}
           dockerfile: Dockerfile
-          deployment: true
-          requires:
-            - setup_remote_docker
       - docker/push:
           image: ahmadmasri/athan
           tag: ${TAG_VERSION}
