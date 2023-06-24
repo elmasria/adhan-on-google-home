@@ -1,11 +1,12 @@
 from datetime import datetime
 
 import pytz
-from app_types import IAppConfig
 from apscheduler.schedulers.background import BackgroundScheduler
 
+from .app_types import IAppConfig
 
-def set_schedulers(scheduler: BackgroundScheduler, times, cb):
+
+def set_schedulers(scheduler: BackgroundScheduler, app_config: IAppConfig, times, cb):
     tz = pytz.timezone("Europe/Amsterdam")
 
     for salat, time in times["todayTimes"].items():
@@ -14,7 +15,11 @@ def set_schedulers(scheduler: BackgroundScheduler, times, cb):
             datetime.now().replace(hour=hour, minute=minute, second=0, microsecond=0)
         )
         scheduler.add_job(
-            cb, "date", run_date=run_time, id=salat, kwargs={"salat": salat}
+            cb,
+            "date",
+            run_date=run_time,
+            id=salat,
+            kwargs={"salat": salat, "app_config": app_config},
         )
 
 

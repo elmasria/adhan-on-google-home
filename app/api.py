@@ -2,8 +2,9 @@ import json
 from typing import Optional
 
 import requests
-from app_types import IPrayerTimes
 from requests.auth import HTTPBasicAuth
+
+from .app_types import IPrayerTimes
 
 
 def initialize_session() -> requests.Session:

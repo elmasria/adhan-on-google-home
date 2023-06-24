@@ -1,6 +1,10 @@
 import os
 
-from app_types import IAppConfig
+from dotenv import load_dotenv
+
+from .app_types import IAppConfig
+
+load_dotenv()
 
 
 def get_app_config() -> IAppConfig:
@@ -9,7 +13,8 @@ def get_app_config() -> IAppConfig:
             "username": os.getenv("MAWAQIT_USERNAME", None),
             "password": os.getenv("MAWAQIT_PASSWORD", None),
             "mosque_uuid": "653f569e-f6f1-4931-b61b-a8bfce5faeb5",
-        }
+        },
+        "device_name": "Kitchen display",
     }
 
     return app_config
