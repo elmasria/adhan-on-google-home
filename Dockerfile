@@ -2,13 +2,9 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY pyproject.toml ./
+COPY requirements.txt ./
 
-RUN curl -sSL https://install.python-poetry.org | python -
-ENV PATH=/root/.local/bin:$PATH
-ENV PATH=$HOME/.poetry/bin:$PATH
-RUN cd ~ && pwd && echo "${PATH}" && ls -lai ~/.local/bin && ls -lai /.poetry/bin
-RUN poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
+RUN pip install -r ./requirements.txt
 
 COPY . .
 
