@@ -7,15 +7,18 @@ jobs:
   build_and_push:
     docker:
       - image: circleci/python:3.9
-    resource_class: large
+    resource_class: xlarge
     steps:
       - checkout
       - setup_remote_docker:
           version: 20.10.7
           docker_layer_caching: true
       - run:
+          name: Upgrade pip
+          command: pip install --upgrade pip
+      - run:
           name: Install Pre-requisites
-          command: ls -lai &&  ./.circleci/scripts/install-changelog-manager.sh
+          command: ./.circleci/scripts/install-changelog-manager.sh
       - run:
           name: Get Version
           command: TAG_VERSION="$(changelog-manager suggest)"
