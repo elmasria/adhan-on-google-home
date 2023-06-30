@@ -10,7 +10,7 @@ app_config: IAppConfig = get_app_config()
 
 app_scheduler = BackgroundScheduler()
 
-app = init_app(app_scheduler)
+app = init_app(app_scheduler, app_config)
 
 set_daily_schedulers(app_scheduler, app_config, adhan_task_schedule)
 adhan_task_schedule(app_scheduler, app_config)

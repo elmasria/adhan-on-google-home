@@ -1,8 +1,11 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, jsonify, send_from_directory
 
+from app.app_types import IAppConfig
+from app.bll import adhan_play
 
-def init_app(scheduler: BackgroundScheduler):
+
+def init_app(scheduler: BackgroundScheduler, app_config: IAppConfig):
     app = Flask(__name__)
 
     @app.route("/")
@@ -23,6 +26,12 @@ def init_app(scheduler: BackgroundScheduler):
             }
             result.append(job_details)
         return jsonify(result)
+
+    @app.route("/test/<salat>")
+    def test(salat):
+        print(salat)
+        adhan_play(salat, app_config)
+        return jsonify({"status": "good"}), 200
 
     @app.route("/play/<filename>")
     def play_song(filename):
