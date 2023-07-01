@@ -16,9 +16,11 @@ def adhan_play(salat: str, app_config: IAppConfig):
 
     ip = host_name if check_ip(ip_address) else ip_address
     file_name = "fajr" if salat == "fajr" else "default"
+    volume = 0.3 if salat == "fajr" else 0.45
+
     url = f"http://{ip}:5000/play/{file_name}.mp3"
 
-    playFile(app_config, 0.45, url)
+    playFile(app_config, volume, url)
 
 
 def adhan_task_schedule(app_scheduler: BackgroundScheduler, app_config: IAppConfig):
