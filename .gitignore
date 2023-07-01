@@ -1,1 +1,45 @@
-node_modules
+# .gitignore
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Flask file
+.flaskenv
+
+# Environments
+.env
+.venv
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Poetry files
+/poetry.lock
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# PyCharm files
+.idea/
+
+# macOS
+.DS_Store
