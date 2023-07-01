@@ -30,9 +30,12 @@ def close_running_app(device):
 
 
 def playFile(app_config: IAppConfig, volume, file_url, file_type="audio/mp3"):
+    print(volume, file_url)
     device, browser = getDeviceByName(app_config.get("device_name"))
     close_running_app(device)
+    print(device.status)
     device.set_volume(volume)
+    time.sleep(1)
     device.play_media(file_url, file_type)
     time.sleep(10)
     browser.stop_discovery()
