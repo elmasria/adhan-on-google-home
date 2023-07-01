@@ -12,9 +12,9 @@ def get_app_config() -> IAppConfig:
         "mawaqit": {
             "username": os.getenv("MAWAQIT_USERNAME", None),
             "password": os.getenv("MAWAQIT_PASSWORD", None),
-            "mosque_uuid": "653f569e-f6f1-4931-b61b-a8bfce5faeb5",
+            "mosque_uuid": os.getenv("DEVICE_NAME", None),
         },
-        "device_name": "Kitchen display",
+        "device_name": os.getenv("MAWAQIT_MOSQUE", None),
     }
 
     return app_config

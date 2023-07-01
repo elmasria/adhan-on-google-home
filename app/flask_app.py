@@ -29,7 +29,6 @@ def init_app(scheduler: BackgroundScheduler, app_config: IAppConfig):
 
     @app.route("/test/<salat>")
     def test(salat):
-        print(salat)
         adhan_play(salat, app_config)
         return jsonify({"status": "good"}), 200
 

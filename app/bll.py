@@ -13,7 +13,7 @@ from app.schedulers import set_schedulers
 
 def adhan_play(salat: str, app_config: IAppConfig):
     ip_address, host_name = get_server_ip()
-    print(ip_address, host_name)
+
     ip = host_name if check_ip(ip_address) else ip_address
     file_name = "fajr" if salat == "fajr" else "default"
     url = f"http://{ip}:5000/play/{file_name}.mp3"
