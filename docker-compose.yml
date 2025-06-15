@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   web:
     build:
@@ -6,10 +5,13 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/app
-    ports:
-      - 5000:5000
+    network_mode: host
     environment:
       - FLASK_APP=app/flask_app.py
       - FLASK_RUN_HOST=0.0.0.0
-      - MAWAQIT_USERNAME=example.com
-      - MAWAQIT_PASSWORD=exmaple.com
+      - PORT=3050
+      - MAWAQIT_USERNAME=MAWAQIT_USERNAME
+      - MAWAQIT_PASSWORD=MAWAQIT_PASSWORD
+      - MAWAQIT_MOSQUE=MAWAQIT_MOSQUE
+      - DEVICE_NAME=DEVICE_NAME
+      - CHROMECAST_IP=CHROMECAST_IP

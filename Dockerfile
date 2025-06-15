@@ -1,4 +1,7 @@
-FROM python:3.9
+FROM python:3.13
+
+# Ensure Python output is sent straight to terminal without buffering
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
